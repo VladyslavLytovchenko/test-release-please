@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   release-please:
-    runs-on: arc-mini
+    runs-on: ubuntu-latest
 
     outputs:
       serverVersion: ${{ steps.release.outputs.server--version }}
