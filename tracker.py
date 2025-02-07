@@ -7,6 +7,8 @@ def lambda_handler(event, context):
 
     secret_name = event['secret_name2']
 
+
+    
     return {
         'statusCode': 200,
     }
