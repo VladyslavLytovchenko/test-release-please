@@ -1,0 +1,54 @@
+name: Release and Push
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: arc-mini
+
+    outputs:
+      serverVersion: ${{ steps.release.outputs.server--version }}
+      serverReleaseCreated: ${{ steps.release.outputs.server--release_created }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: release
+        id: release
+        uses: google-github-actions/release-please-action@v3
+        with:
+          command: manifest
+          release-type: python
+
+  artifacts:
+    runs-on: arc-generic
+    needs:
+      - release-please
+    if: ${{ needs.release-please.outputs.serverReleaseCreated }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: streamline login
+        run: |
+          sl login --cert /home/runner/cert/cicd-cert.pem --cert-key /home/runner/key/cicd-key.pem
+          sl aws session generate --account-id ${{ env.CICD_ACCOUNT }} --profile cicd --role-name ${{ env.CICD_IAM_ROLE }} > /dev/null
+
+      - name: Docker Push
+        env:
+          IMAGE_TAG: ${{ needs.release-please.outputs.serverVersion }}
+        run: |
+          push ${IMAGE_TAG}
