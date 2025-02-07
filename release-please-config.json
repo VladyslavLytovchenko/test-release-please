@@ -9,7 +9,7 @@
     "prerelease": false,
     "packages": {
       "tracker": {
-        "component": "tracker",
+        "path": ".",
         "release-type": "python"
       }
     },
