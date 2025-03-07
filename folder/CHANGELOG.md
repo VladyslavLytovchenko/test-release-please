@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/VladyslavLytovchenko/test-release-please/compare/folder/v1.1.0...folder/v1.1.1) (2025-03-07)
+
+
+### Bug Fixes
+
+* uodate public ([e85a91b](https://github.com/VladyslavLytovchenko/test-release-please/commit/e85a91bb082f8c1d6da270dcd2d894bb44f25431))
+
 ## [1.1.0](https://github.com/VladyslavLytovchenko/test-release-please/compare/folder-v1.0.0...folder/v1.1.0) (2025-03-07)
 
 
