@@ -1,0 +1,4 @@
+package aaa
+
+func Public() {
+}

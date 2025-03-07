@@ -14,8 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      serverVersion: ${{ steps.release.outputs.server--version }}
-      serverReleaseCreated: ${{ steps.release.outputs.server--release_created }}
+      prs: ${{ steps.release.outputs.prs }}
+      releases_created: ${{ steps.release.outputs.releases_created }}
+      manager-server--tag-name: ${{ steps.release.outputs.folder--tag-name }}
+      ips-syncer--tag-name: ${{ steps.release.outputs.folder-a--tag-name }}
 
     steps:
       - name: Checkout repository
@@ -34,7 +36,6 @@ jobs:
     runs-on: arc-generic
     needs:
       - release-please
-    if: ${{ needs.release-please.outputs.serverReleaseCreated }}
 
     steps:
       - name: Checkout repository
@@ -42,13 +43,10 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: streamline login
-        run: |
-          sl login --cert /home/runner/cert/cicd-cert.pem --cert-key /home/runner/key/cicd-key.pem
-          sl aws session generate --account-id ${{ env.CICD_ACCOUNT }} --profile cicd --role-name ${{ env.CICD_IAM_ROLE }} > /dev/null
-
       - name: Docker Push
         env:
-          IMAGE_TAG: ${{ needs.release-please.outputs.serverVersion }}
+          FOLDER_TAG: ${{ needs.release-please.outputs.manager-server--tag-name }}
+          FOLDER_A_TAG: ${{ needs.release-please.outputs.ips-syncer--tag-name }}
         run: |
-          push ${IMAGE_TAG}
+          echo $FOLDER_TAG
+          echo $FOLDER_A_TAG
