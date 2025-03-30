@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5](https://github.com/VladyslavLytovchenko/test-release-please/compare/folder-a/v1.2.4...folder-a/v1.2.5) (2025-03-30)
+
+
+### Bug Fixes
+
+* Update a.go ([82d9a4f](https://github.com/VladyslavLytovchenko/test-release-please/commit/82d9a4f68811aa1c7e6f42bef750fc385607d957))
+
 ## [1.2.4](https://github.com/VladyslavLytovchenko/test-release-please/compare/folder-a/v1.2.3...folder-a/v1.2.4) (2025-03-30)
 
 
