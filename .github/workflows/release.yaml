@@ -47,11 +47,13 @@ jobs:
 
       - name: Docker Push
         env:
+          CREATED: ${{ needs.release-please.outputs.releases_created }}
           FOLDER_TAG: ${{ needs.release-please.outputs.manager-server--tag-name }}
           FOLDER_A_TAG: ${{ needs.release-please.outputs.ips-syncer--tag-name }}
           FOLDER_VERSION: ${{ needs.release-please.outputs.manager-server--version }}
           FOLDER_A_VERSION: ${{ needs.release-please.outputs.ips-syncer--version }}
         run: |
+          echo $CREATED
           echo $FOLDER_TAG
           echo $FOLDER_A_TAG
           echo $FOLDER_VERSION
