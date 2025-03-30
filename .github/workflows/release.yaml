@@ -35,7 +35,7 @@ jobs:
           release-type: python
 
   artifacts:
-    runs-on: arc-generic
+    runs-on: ubuntu-latest
     needs:
       - release-please
 
