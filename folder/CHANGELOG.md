@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/VladyslavLytovchenko/test-release-please/compare/folder/v1.1.1...folder/v1.1.2) (2025-03-30)
+
+
+### Bug Fixes
+
+* Update main.go ([349cafa](https://github.com/VladyslavLytovchenko/test-release-please/commit/349cafac1ee3340d8bc879d8a70bab4a0a16242f))
+
 ## [1.1.1](https://github.com/VladyslavLytovchenko/test-release-please/compare/folder/v1.1.0...folder/v1.1.1) (2025-03-07)
 
 
