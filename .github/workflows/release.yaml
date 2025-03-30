@@ -17,10 +17,10 @@ jobs:
       prs: ${{ steps.release.outputs.prs }}
       paths: ${{ steps.release.outputs.paths_released }}
       releases_created: ${{ steps.release.outputs.releases_created }}
-      manager-server--tag-name: "${{ steps.release.outputs.folder--tag-name }}"
-      ips-syncer--tag-name: "${{ steps.release.outputs.folder/a--tag-name }}"
+      manager-server--tag-name: "${{ steps.release.outputs['folder--tag-name'] }}"
+      ips-syncer--tag-name: "${{ steps.release.outputs['folder/a--tag-name'] }}"
       manager-server--version: "${{ steps.release.outputs.folder--version }}"
-      ips-syncer--version: "${{ steps.release.outputs.folder/a--version }}"
+      ips-syncer--version: "${{ steps.release.outputs['folder/a--version'] }}"
 
     steps:
       - name: Checkout repository
